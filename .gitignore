@@ -1,0 +1,74 @@
+# Maven target directory
+/target/
+
+# Compiled class files
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+/log/
+/logs/
+
+# IntelliJ IDEA files
+/.idea/
+/*.iml
+
+# Eclipse files
+.project
+.classpath
+.settings/
+/bin/
+
+# NetBeans files
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code files
+.vscode/
+
+# Thumbnails
+._*
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# H2 database files
+*.h2.db
+*.mv.db
+
+# Java built-in debug
+hs_err_pid*
+
+# Spring Boot dev tools
+.spring-boot-devtools.properties
+
+# Sensitive or environment-specific configuration
+*.env
+*.secret
+
+# IDE auto-generated files
+*.swp
+*.swo
+
+# JaCoCo test coverage
+.jacoco/
+*.exec
+
+# SonarQube related files
+.sonar/
+
+./.idea/
