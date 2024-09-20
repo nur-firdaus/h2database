@@ -1,3 +1,18 @@
+CREATE TABLE IF NOT EXISTS articles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tags (
+    article_id INT,
+    tag VARCHAR(255),
+    PRIMARY KEY (article_id, tag),
+    FOREIGN KEY (article_id) REFERENCES articles(id)
+);
+
+
+
 INSERT INTO articles (id, title, content) VALUES
 (1, 'Introduction to Spring Boot', 'This is a tutorial on Spring Boot basics.'),
 (2, 'Understanding REST APIs', 'This article explains RESTful web services in detail.'),

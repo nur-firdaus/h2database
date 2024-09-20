@@ -14,7 +14,7 @@ import java.util.*;
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Ensure this matches the type used in ArticleDTO
+    private Long id;
 
     private String title;
     private String content;

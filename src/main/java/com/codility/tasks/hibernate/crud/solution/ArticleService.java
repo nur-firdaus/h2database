@@ -1,5 +1,7 @@
 package com.codility.tasks.hibernate.crud.solution;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.slf4j.SLF4JLogger;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.data.repository.*;
 import org.springframework.stereotype.*;
@@ -9,6 +11,7 @@ import java.util.*;
 import java.util.stream.*;
 
 @Service
+@Slf4j
 class ArticleService {
 
     @Value("${articles.blacklist}")
@@ -77,6 +80,7 @@ class ArticleService {
         if (article != null) {
             article.setTitle(articleDTO.getTitle());
             article.setContent(articleDTO.getContent());
+            log.info(articleDTO.getTags().toString());
             article.setTag(articleDTO.getTags());
             Article updatedArticle = articleRepository.save(article);
         }

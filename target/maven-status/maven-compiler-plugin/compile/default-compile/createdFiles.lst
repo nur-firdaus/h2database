@@ -1,0 +1,6 @@
+com\codility\tasks\hibernate\crud\solution\ArticleController.class
+com\codility\tasks\hibernate\crud\solution\ArticleService.class
+com\codility\tasks\hibernate\crud\solution\Article.class
+com\codility\tasks\hibernate\crud\solution\ArticleDTO.class
+com\codility\tasks\hibernate\crud\solution\ArticleRepository.class
+com\codility\tasks\hibernate\crud\solution\DemoApplication.class

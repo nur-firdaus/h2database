@@ -2,12 +2,11 @@ package com.codility.tasks.hibernate.crud.solution;
 
 import java.util.List;
 
+
 public class ArticleDTO {
     private String title;
     private String content;
     private List<String> tags;
-
-    // Getters and Setters
 
 
     public String getTitle() {
