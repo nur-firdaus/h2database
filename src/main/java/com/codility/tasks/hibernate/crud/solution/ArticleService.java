@@ -48,6 +48,12 @@ class ArticleService {
         return article.map(value -> Optional.of(convertToDTO(value))).orElse(null);
     }
 
+    public List<ArticleDTO> findAll() {
+        return articleRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     public List<ArticleDTO> findByTitle(String title) {
         return articleRepository.findByTitleContaining(title).stream()
                 .map(this::convertToDTO)

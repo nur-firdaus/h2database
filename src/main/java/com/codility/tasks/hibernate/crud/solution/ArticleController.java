@@ -36,4 +36,9 @@ public class ArticleController {
     public List<ArticleDTO> deleteArticle(@PathVariable String title) {
         return articleService.findByTitle(title);
     }
+
+    @GetMapping("/")
+    public List<ArticleDTO> findAll() {
+        return articleService.findAll();
+    }
 }
