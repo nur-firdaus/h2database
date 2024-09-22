@@ -7,12 +7,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ocbc-test" />
+        <module name="article-publish-test" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ocbc-test" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="article-publish-test" options="-parameters" />
       <module name="ocbc-test" options="-parameters" />
     </option>
   </component>

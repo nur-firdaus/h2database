@@ -78,4 +78,11 @@ public class THMLController {
         }
         return "redirect:/";
     }
+
+    @GetMapping("/search")
+    public String searchArticles(@RequestParam("title") String title, Model model) {
+        List<ArticleDTO> articles = articleService.findByTitle(title);
+        model.addAttribute("articles", articles);
+        return "index";
+    }
 }

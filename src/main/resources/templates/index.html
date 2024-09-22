@@ -30,6 +30,13 @@
 
 <div class="container mt-5">
     <h1 class="mb-4">Articles</h1>
+
+    <!-- Search Form -->
+    <form class="d-flex mb-4" method="get" action="/search">
+        <input class="form-control me-2" type="search" name="title" placeholder="Search by title" aria-label="Search" required>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
     <div class="row">
         <!-- Loop through articles list -->
         <div class="col-md-4" th:each="article : ${articles}">
@@ -50,7 +57,7 @@
                     </button>
 
                     <!-- Delete Button -->
-                    <form th:action="@{/articles/delete/{id}(id=${article.id})}" method="post" style="display:inline-block;">
+                    <form th:action="@{/delete/{id}(id=${article.id})}" method="post" style="display:inline-block;">
                         <input type="hidden" th:value="${article.id}" name="id">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>

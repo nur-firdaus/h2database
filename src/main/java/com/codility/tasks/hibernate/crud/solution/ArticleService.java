@@ -1,9 +1,7 @@
 package com.codility.tasks.hibernate.crud.solution;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.slf4j.SLF4JLogger;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.data.repository.*;
 import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
@@ -89,16 +87,15 @@ class ArticleService {
         return false;
     }
 
+
+    @Transactional
     public void update(Long id, ArticleDTO articleDTO) {
-        Article article = articleRepository.findById(id).orElse(null);
-        if (article != null) {
-            article.setTitle(articleDTO.getTitle());
-            article.setContent(articleDTO.getContent());
-            log.info(articleDTO.getTags().toString());
-            article.setTag(articleDTO.getTags());
-            log.info("article {}",article);
-            Article updatedArticle = articleRepository.save(article);
-        }
+        Article article=new Article();
+        article.setId(id);
+        article.setTitle(articleDTO.getTitle());
+        article.setContent(articleDTO.getContent());
+        article.setTag(articleDTO.getTags());
+        articleRepository.save(article);
     }
 
     public void delete(Long id) {

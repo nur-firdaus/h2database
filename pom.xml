@@ -10,9 +10,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.codelity</groupId>
-    <artifactId>ocbc-test</artifactId>
+    <artifactId>article-publish-test</artifactId>
     <version>0.0.1</version>
-    <name>ocbc-test</name>
+    <name>article-publish-test</name>
     <description>Spring Boot 3 Project</description>
     <properties>
         <java.version>17</java.version> <!-- Updated to Java 17 -->
@@ -66,7 +66,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>ocbc-test</finalName>
+        <finalName>article-publish-test</finalName>
         <plugins>
             <!-- Maven Compiler Plugin for Java 17 -->
             <plugin>
