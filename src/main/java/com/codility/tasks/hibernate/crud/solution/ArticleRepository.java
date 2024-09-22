@@ -11,5 +11,5 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     // Method to find an article by title
     Optional<Article> findByTitle(String title);
 
-    List<Article> findByTitleContaining(String title);
+    List<Article> findByTitleContainingIgnoreCase(String title);
 }

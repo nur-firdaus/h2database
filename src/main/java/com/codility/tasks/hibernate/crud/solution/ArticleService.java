@@ -61,7 +61,7 @@ class ArticleService {
     }
 
     public List<ArticleDTO> findByTitle(String title) {
-        return articleRepository.findByTitleContaining(title).stream()
+        return articleRepository.findByTitleContainingIgnoreCase(title).stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
