@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS articles (
     content TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS tags (
+CREATE TABLE IF NOT EXISTS tag (
     article_id INT,
     tag VARCHAR(255),
     PRIMARY KEY (article_id, tag),

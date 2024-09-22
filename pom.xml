@@ -6,19 +6,19 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.5.RELEASE</version> <!-- Update to 2.0.5 -->
+        <version>3.1.0</version> <!-- Updated to Spring Boot 3.1.0 -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.codelity</groupId>
     <artifactId>ocbc-test</artifactId>
     <version>0.0.1</version>
     <name>ocbc-test</name>
-    <description></description>
+    <description>Spring Boot 3 Project</description>
     <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-cloud.version>2020.0.2</spring-cloud.version>
+        <java.version>17</java.version> <!-- Updated to Java 17 -->
+        <maven.compiler.source>17</maven.compiler.source> <!-- Updated to Java 17 -->
+        <maven.compiler.target>17</maven.compiler.target> <!-- Updated to Java 17 -->
+        <spring-cloud.version>2022.0.3</spring-cloud.version> <!-- Optional: Updated Spring Cloud version -->
     </properties>
     <dependencies>
         <!-- Spring Boot Starter Web -->
@@ -44,11 +44,15 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- Lombok for code generation -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -64,26 +68,21 @@
     <build>
         <finalName>ocbc-test</finalName>
         <plugins>
+            <!-- Maven Compiler Plugin for Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>17</source> <!-- Updated to Java 17 -->
+                    <target>17</target> <!-- Updated to Java 17 -->
                 </configuration>
             </plugin>
+
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -98,5 +97,4 @@
             </snapshots>
         </repository>
     </repositories>
-
 </project>
