@@ -1,6 +1,7 @@
 package com.codility.tasks.hibernate.crud.solution;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@Data
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

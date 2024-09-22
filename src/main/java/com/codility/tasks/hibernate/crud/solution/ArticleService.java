@@ -30,6 +30,7 @@ class ArticleService {
 
     private ArticleDTO convertToDTO(Article article) {
         ArticleDTO articleDTO = new ArticleDTO();
+        articleDTO.setId(article.getId());
         articleDTO.setTitle(article.getTitle());
         articleDTO.setContent(article.getContent());
         articleDTO.setTags(article.getTag());
@@ -63,8 +64,8 @@ class ArticleService {
     public Long create(ArticleDTO articleDTO) {
         if(!isContainsBlacklistWord(articleDTO.getContent())) {
             Article article = convertToEntity(articleDTO);
-            Article savedArticle = articleRepository.save(article);
-            return savedArticle.getId().longValue();
+            article = articleRepository.save(article);
+            return article.getId();
         }else{
             throw new IllegalArgumentException("Article content contains forbidden words");
         }
@@ -96,8 +97,7 @@ class ArticleService {
         try {
             articleRepository.deleteById(id);
         }catch (Exception e){
-            System.out.println("error");
+            log.error("error {}",e.getMessage());
         }
-
     }
 }
