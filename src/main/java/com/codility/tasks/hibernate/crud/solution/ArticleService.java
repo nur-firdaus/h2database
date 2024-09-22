@@ -34,6 +34,13 @@ class ArticleService {
         articleDTO.setTitle(article.getTitle());
         articleDTO.setContent(article.getContent());
         articleDTO.setTags(article.getTag());
+        if(!article.getTag().isEmpty()){
+            StringBuilder sTag= new StringBuilder();
+            for (String tag: article.getTag()) {
+                sTag.append(", ").append(tag);
+            }
+            articleDTO.setStringTags(sTag.toString().substring(2));
+        }
         return articleDTO;
     }
 
@@ -89,6 +96,7 @@ class ArticleService {
             article.setContent(articleDTO.getContent());
             log.info(articleDTO.getTags().toString());
             article.setTag(articleDTO.getTags());
+            log.info("article {}",article);
             Article updatedArticle = articleRepository.save(article);
         }
     }

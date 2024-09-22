@@ -44,11 +44,48 @@
                         </ul>
                     </div>
 
-                    <!-- Add delete button -->
-                    <form th:action="@{/delete/{id}(id=${article.id})}" method="post">
+                    <!-- Edit Button -->
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" th:data-bs-target="'#editModal' + ${article.id}">
+                        Edit
+                    </button>
+
+                    <!-- Delete Button -->
+                    <form th:action="@{/articles/delete/{id}(id=${article.id})}" method="post" style="display:inline-block;">
                         <input type="hidden" th:value="${article.id}" name="id">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
+
+                    <!-- Edit Modal -->
+                    <div class="modal fade" th:id="'editModal' + ${article.id}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" th:text="'Edit Article: ' + ${article.title}">Edit Article</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form to edit the article -->
+                                    <form th:action="@{/update/{id}(id=${article.id})}" method="post">
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label">Title</label>
+                                            <input type="text" class="form-control" id="title" name="title" th:value="${article.title}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="content" class="form-label">Content</label>
+                                            <textarea class="form-control" id="content" name="content" rows="3" required th:text="${article.content}"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="stringTags" class="form-label">Tags</label>
+                                            <input type="text" class="form-control" id="stringTags" name="stringTags" th:value="${article.stringTags}">
+                                            <small class="form-text text-muted">Separate tags with commas.</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Modal -->
                 </div>
             </div>
         </div>

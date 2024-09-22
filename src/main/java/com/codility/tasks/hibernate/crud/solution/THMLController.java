@@ -4,10 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
@@ -43,13 +40,32 @@ public class THMLController {
             } else {
                 articleDTO.setTags(new ArrayList<>());
             }
-            log.info("article {}",articleDTO.toString());
             articleService.create(articleDTO);
             redirectAttributes.addFlashAttribute("success", "Article created successfully!");
         } catch (IllegalArgumentException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
         return "redirect:/"; // Redirect to the list of articles
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateArticle(@PathVariable Long id,
+                                @RequestParam("title") String title,
+                                @RequestParam("content") String content,
+                                @RequestParam("stringTags") String stringTags,
+                                RedirectAttributes redirectAttributes) {
+        try {
+            ArticleDTO articleDTO = new ArticleDTO();
+            articleDTO.setTitle(title);
+            articleDTO.setContent(content);
+            articleDTO.setTags(List.of(stringTags.split(","))); // Split tags by commas
+            log.info("article {}",articleDTO);
+            articleService.update(id, articleDTO);
+            redirectAttributes.addFlashAttribute("success", "Article updated successfully!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error updating the article.");
+        }
+        return "redirect:/";
     }
 
     @PostMapping("/delete/{id}")
